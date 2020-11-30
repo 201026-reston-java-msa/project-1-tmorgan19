@@ -20,14 +20,16 @@
 
 	<property name="hibernate.connection.pool_size">10</property>
 	
-	<property name="hibernate.hbm2ddl.auto">create</property>
+	<property name="hibernate.hbm2ddl.auto">update</property>
 	<!-- CREATE, VALIDATE, UPDATE, NONE -->
 	
 
 	
 	<mapping class="com.revature.model.User"/>
 	<mapping class="com.revature.model.Role"/>
-	<!-- <mapping class="com.revature.models.SuperPrison"/> -->	
+	<mapping class="com.revature.model.Reimbursement"/>	
+	<mapping class="com.revature.model.Status"/>
+	<mapping class="com.revature.model.Type"/>
 	</session-factory>
 </hibernate-configuration>
 

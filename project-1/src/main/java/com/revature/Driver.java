@@ -1,16 +1,30 @@
 package com.revature;
 
+import java.util.List;
+
+import com.revature.dao.ReimbRepository;
 import com.revature.dao.RoleRepository;
+import com.revature.dao.StatusRepository;
+import com.revature.dao.TypeRepository;
 import com.revature.dao.UserRepository;
+import com.revature.model.Reimbursement;
 import com.revature.model.Role;
+import com.revature.model.Status;
+import com.revature.model.Type;
 import com.revature.model.User;
+import com.revature.service.ReimbService;
 
 public class Driver {
 
 	public static void main(String[] args) {
 
-		initialValues();
+//		initialValues();
+//		ReimbRepository rr = new ReimbRepository();
+//		List<Reimbursement> reimbs = rr.findByStatus(1);
+//		for (Reimbursement r : reimbs) {
+//			System.out.println(r.toString());
 	}
+	
 	
 	public static void initialValues() {
 		Role r1 = new Role(1, "Employee");
@@ -35,6 +49,34 @@ public class Driver {
 		ur.save(u1);
 		ur.save(u2);
 		
+		List<User> userList = ur.findAll();
+		for (User u : userList) {
+			System.out.println(u.toString());
+		}
+		System.out.println("find by username" + ur.findByUsername(username).toString());
+		
+		Type t1 = new Type(1, "Lodging");
+		Type t2 = new Type(2, "Travel");
+		Type t3 = new Type(3, "Food");
+		Type t4 = new Type(4,"Other");
+		
+		TypeRepository tr = new TypeRepository();
+		tr.save(t1);
+		tr.save(t2);
+		tr.save(t3);
+		tr.save(t4);
+		
+		Status s1 = new Status(1, "Pending");
+		Status s2 = new Status(2, "Approved");
+		Status s3 = new Status(3, "Denied");
+		
+		StatusRepository sr = new StatusRepository();
+		sr.save(s1);
+		sr.save(s2);
+		sr.save(s3);
+		
+//		ReimbService.generateReimbursement(100, new UserRepository().findById(1), "test reimbursement");
 	}
+	
 }
 

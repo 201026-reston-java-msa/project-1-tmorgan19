@@ -24,8 +24,8 @@ public class Role {
 	@Column(name="role_name")
 	private String roleName;
 	
-	@OneToMany(mappedBy="role", fetch=FetchType.LAZY)
-	private List<User> users = new ArrayList<>();
+//	@OneToMany(mappedBy="role", fetch=FetchType.LAZY)
+//	private List<User> users = new ArrayList<>();
 	
 	public Role() {
 		super();
@@ -35,7 +35,7 @@ public class Role {
 		super();
 		this.roleId = roleId;
 		this.roleName = roleName;
-		this.users = users;
+//		this.users = users;
 	}
 
 	public Role(int roleId, String roleName) {
@@ -60,13 +60,19 @@ public class Role {
 		this.roleName = roleName;
 	}
 
-	public List<User> getUsers() {
-		return users;
+	@Override
+	public String toString() {
+		return "Role [roleId=" + roleId + ", roleName=" + roleName + "]";
 	}
 
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
+//	public List<User> getUsers() {
+////		return users;
+//	}
+
+//	public void setUsers(List<User> users) {
+//		this.users = users;
+//	}
+	
 	
 	
 }

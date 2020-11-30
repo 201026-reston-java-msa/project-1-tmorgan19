@@ -1,37 +1,73 @@
 package com.revature.model;
 
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="reimbursement")
 public class Reimbursement {
 
+	@Id
+	@Column(name="reimb_id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int reimbId;
+	
+	@Column(name="amount", nullable=false)
 	private double amount;
-	private LocalTime submitedTime;
-	private LocalTime resolvedTime;
+	
+	@Basic
+	@Column(name="submitted")
+	private LocalDateTime submitedTime;
+	
+	@Basic
+	@Column(name="resolved")
+	private LocalDateTime resolvedTime;
+	
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="author_id")
 	private User author;
+	
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="resolver_id")
 	private User resolver;
+	
+	@Column(name="description")
 	private String description;
+	
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="status_id")
 	private Status status;
+	
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="type_id")
 	private Type type;
 	
 	public Reimbursement() {
 		super();
 	}
 
-	public Reimbursement(double amount, LocalTime submitedTime, LocalTime resolvedTime, User author, User resolver,
-			String description, Status status, Type type) {
+	public Reimbursement(double amount, User author, String description, Status status, Type type) {
 		super();
 		this.amount = amount;
-		this.submitedTime = submitedTime;
-		this.resolvedTime = resolvedTime;
+		this.submitedTime = LocalDateTime.now();
 		this.author = author;
-		this.resolver = resolver;
 		this.description = description;
 		this.status = status;
 		this.type = type;
 	}
 	
-	public Reimbursement(int reimbId, double amount, LocalTime submitedTime, LocalTime resolvedTime, User author,
+	public Reimbursement(int reimbId, double amount, LocalDateTime submitedTime, LocalDateTime resolvedTime, User author,
 			User resolver, String description, Status status, Type type) {
 		super();
 		this.reimbId = reimbId;
@@ -61,19 +97,19 @@ public class Reimbursement {
 		this.amount = amount;
 	}
 
-	public LocalTime getSubmitedTime() {
+	public LocalDateTime getSubmitedTime() {
 		return submitedTime;
 	}
 
-	public void setSubmitedTime(LocalTime submitedTime) {
+	public void setSubmitedTime(LocalDateTime submitedTime) {
 		this.submitedTime = submitedTime;
 	}
 
-	public LocalTime getResolvedTime() {
+	public LocalDateTime getResolvedTime() {
 		return resolvedTime;
 	}
 
-	public void setResolvedTime(LocalTime resolvedTime) {
+	public void setResolvedTime(LocalDateTime resolvedTime) {
 		this.resolvedTime = resolvedTime;
 	}
 
@@ -115,6 +151,13 @@ public class Reimbursement {
 
 	public void setType(Type type) {
 		this.type = type;
+	}
+
+	@Override
+	public String toString() {
+		return "Reimbursement [reimbId=" + reimbId + ", amount=" + amount + ", submitedTime=" + submitedTime
+				+ ", resolvedTime=" + resolvedTime + ", author=" + author + ", resolver=" + resolver + ", description="
+				+ description + ", status=" + status + ", type=" + type + "]";
 	}
 
 

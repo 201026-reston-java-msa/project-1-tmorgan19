@@ -3,41 +3,27 @@ package com.revature.dao;
 import java.util.List;
 
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 import com.revature.model.Role;
 import com.revature.util.HibernateUtil;
 
-public class RoleRepository implements CrudRepository<Role>{
+public class RoleRepository extends CrudRepository<Role>{
 
-	@Override
-	public void save(Role t) {
-		Session ses = HibernateUtil.getSession();
-		Transaction tx = ses.beginTransaction();
-		
-		ses.save(t);
-		tx.commit();		
-	}
-
-	@Override
-	public List<Role> findAll(Role t) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public Role findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Session ses = HibernateUtil.getSession();
+		Role role = ses.get(Role.class, id);
+		return role;
 	}
 
 	@Override
-	public void update(Role t) {
+	public List<Role> findAll() {
 		Session ses = HibernateUtil.getSession();
-		Transaction tx = ses.beginTransaction();
-		
-		ses.update(t);
-		tx.commit();		
+		List<Role> roles = ses.createQuery("from Role", Role.class).list();
+		return roles;
 	}
+
+
 
 }

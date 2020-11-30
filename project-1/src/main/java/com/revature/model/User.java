@@ -1,5 +1,8 @@
 package com.revature.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -35,9 +39,15 @@ public class User {
 	@Column(name="email")
 	private String email;
 	
-	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name="role_id")
 	private Role role;
+	
+//	@OneToMany(mappedBy="author", fetch=FetchType.LAZY)
+//	private List<User> authors = new ArrayList<User>();
+//	
+//	@OneToMany(mappedBy="resolver", fetch=FetchType.LAZY)
+//	private List<User> resolvers = new ArrayList<User>();
 	
 	public User() {
 		super();
