@@ -68,6 +68,7 @@
   <servlet-mapping>
     <servlet-name>EmployeeViewServlet</servlet-name>
     <url-pattern>/EmployeeView</url-pattern>
+    <url-pattern>/EmployeeView/*</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>

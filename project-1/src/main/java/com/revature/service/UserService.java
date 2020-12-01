@@ -1,5 +1,7 @@
 package com.revature.service;
 
+import java.util.List;
+
 import com.revature.dao.UserRepository;
 import com.revature.model.User;
 
@@ -58,5 +60,9 @@ public class UserService {
 			ur.update(u);
 		}
 
+	}
+
+	public static List<User> getAllUsers() {
+		return new UserRepository().findAll();
 	}
 }
