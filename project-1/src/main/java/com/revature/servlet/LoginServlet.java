@@ -37,7 +37,12 @@ public class LoginServlet extends HttpServlet {
 		if (UserService.verifyLogin(username, password)) {
 			session.setAttribute("username", username);
 			session.setAttribute("problem", null);
-			response.sendRedirect("EmployeeHome.html");
+			if (UserService.isManager(username)) {
+				response.sendRedirect("ManagerHome.html");
+			}
+			else {
+				response.sendRedirect("EmployeeHome.html");
+			}
 			
 		} else {
 			session.setAttribute("problem", "invalid login");

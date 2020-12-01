@@ -39,23 +39,11 @@ public class ReimbViewServlet extends HttpServlet {
 //
 //		}
 		String username = request.getSession(false).getAttribute("username").toString();
-//		String username = "example";
 		int statusId = 1;
 		List<Reimbursement> reimbs = ReimbService.filterStatusByUser(username, statusId);
 		if (reimbs != null) {
 
-//			ObjectMapper om = new ObjectMapper();
-//			String json = om.writeValueAsString(reimbs);
-			
-			//this section works for printing json to screen when /ReimbursementView accessed
-//			Gson gson = new Gson();
-//			gson.toJson(reimbs,
-//		            new TypeToken<ArrayList<Reimbursement>>() {}.getType(),
-//		            response.getWriter());
-//			response.setStatus(200);
-			//section goes with above
-			
-			//this section added 11:56AM as test
+
 			Gson gson = new GsonBuilder()
 					.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeSerializer())
 					.create();
@@ -65,13 +53,7 @@ public class ReimbViewServlet extends HttpServlet {
 			response.setCharacterEncoding("UTF-8");
 			pw.print(json);
 			pw.flush();
-			//section ending
-			
-			
-			
-//			PrintWriter pw = response.getWriter();
-//			pw.println(json);
-//			System.out.println(json);
+
 		}
 	}
 

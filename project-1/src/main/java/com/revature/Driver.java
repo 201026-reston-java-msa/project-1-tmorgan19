@@ -23,9 +23,26 @@ public class Driver {
 //		List<Reimbursement> reimbs = rr.findByStatus(1);
 //		for (Reimbursement r : reimbs) {
 //			System.out.println(r.toString());
+		initialManagerValues();
 	}
 	
 	
+	private static void initialManagerValues() {
+		RoleRepository rr = new RoleRepository();
+		Role r2 = rr.findById(2);
+		
+		String username = "manager";
+		String password = "password";
+		String firstName = "Man";
+		String lastName = "Ager";
+		String email = "manager@mail.com";
+		User u3 = new User(username, password, firstName, lastName, email, r2);
+		
+		UserRepository ur = new UserRepository();
+		ur.save(u3);
+	}
+
+
 	public static void initialValues() {
 		Role r1 = new Role(1, "Employee");
 		Role r2 = new Role(2, "Manager");

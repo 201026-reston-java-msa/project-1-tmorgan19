@@ -20,4 +20,15 @@ public class UserService {
 			return false;
 		}
 	}
+
+	public static boolean isManager(String username) {
+		UserRepository ur = new UserRepository();
+		User u = ur.findByUsername(username);
+		if (u.getRole().getRoleName().equalsIgnoreCase("Manager")) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 }
