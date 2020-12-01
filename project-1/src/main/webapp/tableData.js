@@ -40,7 +40,10 @@ function renderTableHTML(data){
         for (var j = 0; j < col.length; j++) {
             var tabCell = tr.insertCell(-1);
 
-            if (typeof(data[i][col[j]]) === 'object'){ //output just 1 property for author, status & type objects
+            if (data[i][col[j]] === null){
+                tabCell.innerHTML = 'none';
+            } 
+            else if (typeof(data[i][col[j]]) === 'object'){ //output just 1 property for author, status & type objects
                 var index = [];
                 for (var x in data[i][col[j]]){
                     index.push(x);

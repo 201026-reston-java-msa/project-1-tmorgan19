@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.revature.model.Reimbursement;
 import com.revature.service.ReimbService;
+import com.revature.service.UserService;
 import com.revature.util.LocalDateTimeSerializer;
 
 
@@ -38,14 +39,23 @@ public class ReimbViewServlet extends HttpServlet {
 //		for (Reimbursement r : reimbursements) {
 //
 //		}
+		List<Reimbursement> reimbs;
 		String username = request.getSession(false).getAttribute("username").toString();
 		int statusId = 1;
-		List<Reimbursement> reimbs = ReimbService.filterStatusByUser(username, statusId);
+		if (UserService.isManager(username)) {
+			reimbs = ReimbService.filterStatusByAll(statusId);
+		}
+		else {
+			reimbs = ReimbService.filterStatusByUser(username, statusId);
+		}
+		
+		
 		if (reimbs != null) {
 
 
 			Gson gson = new GsonBuilder()
 					.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeSerializer())
+					.serializeNulls()
 					.create();
 			String json = gson.toJson(reimbs);
 			PrintWriter pw = response.getWriter();

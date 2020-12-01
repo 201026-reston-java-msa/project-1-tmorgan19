@@ -1,5 +1,6 @@
 package com.revature.service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,6 +44,32 @@ public class ReimbService {
 			}
 		}
 		return reimbursements;
+	}
+	
+	public static List<Reimbursement> filterStatusByAll(int statusId){
+		return new ReimbRepository().findByStatus(statusId);
+	}
+
+	public static void updateStatus(String username, int reimbId, String newStatusReq) {
+		User resolver = new UserRepository().findByUsername(username);
+		
+		StatusRepository sr = new StatusRepository();
+		Status newStatus = null;
+		if (newStatusReq.equalsIgnoreCase("Approve")) {
+			newStatus = sr.findById(2);
+		} else if (newStatusReq.equalsIgnoreCase("Deny")) {
+			newStatus = sr.findById(3);
+		}
+		
+		ReimbRepository rr = new ReimbRepository();
+		Reimbursement reimbursement = rr.findById(reimbId);
+		
+		reimbursement.setResolver(resolver);
+		reimbursement.setStatus(newStatus);
+		reimbursement.setResolvedTime(LocalDateTime.now());
+		
+		rr.update(reimbursement);
+		
 	}
 	
 }

@@ -48,4 +48,14 @@
     <servlet-name>ReimbViewServlet</servlet-name>
     <url-pattern>/ReimbursementView</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ChangeStatusServlet</display-name>
+    <servlet-name>ChangeStatusServlet</servlet-name>
+    <servlet-class>com.revature.servlet.ChangeStatusServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChangeStatusServlet</servlet-name>
+    <url-pattern>/ChangeStatus</url-pattern>
+  </servlet-mapping>
 </web-app>
