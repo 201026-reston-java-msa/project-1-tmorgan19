@@ -35,4 +35,28 @@ public class UserService {
 	public static User getUserInfo(String username) {
 		return new UserRepository().findByUsername(username);
 	}
+
+	public static void updateUser(String username, String newFirstName, String newLastName, String newEmail) {
+		UserRepository ur = new UserRepository();
+		User u = ur.findByUsername(username);
+		
+		boolean change = false;
+		if (!u.getFirstName().equals(newFirstName)) {
+			u.setFirstName(newFirstName);
+			change = true;
+		}
+		if (!u.getLastName().equals(newLastName)) {
+			u.setLastName(newLastName);
+			change = true;
+		}
+		if (!u.getEmail().equals(newEmail)) {
+			u.setEmail(newEmail);
+			change = true;
+		}
+		
+		if (change) {
+			ur.update(u);
+		}
+
+	}
 }

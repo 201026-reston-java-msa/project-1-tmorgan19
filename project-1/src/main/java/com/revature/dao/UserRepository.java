@@ -3,6 +3,7 @@ package com.revature.dao;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import com.revature.model.User;
@@ -40,5 +41,5 @@ public class UserRepository extends CrudRepository<User> {
 		User user = ses.get(User.class, id);
 		return user;
 	}
-
+	
 }

@@ -69,4 +69,14 @@
     <servlet-name>EmployeeViewServlet</servlet-name>
     <url-pattern>/EmployeeView</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateEmployeeServlet</display-name>
+    <servlet-name>UpdateEmployeeServlet</servlet-name>
+    <servlet-class>com.revature.servlet.UpdateEmployeeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateEmployeeServlet</servlet-name>
+    <url-pattern>/UpdateEmployee</url-pattern>
+  </servlet-mapping>
 </web-app>

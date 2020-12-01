@@ -1,4 +1,3 @@
-// var btn = document.getElementById("btn-up");
 var tableContainer = document.getElementById("empTable");
 var userIdLoc = document.getElementById("userId");
 var usernameLoc = document.getElementById("username");
@@ -20,11 +19,6 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 ourRequest.send();
 })
-
-// btn.addEventListener("click", function() {
-//     console.log('button clicked')
-
-// });
 
 function renderHTML(data){
     userIdLoc.value = data.userId;

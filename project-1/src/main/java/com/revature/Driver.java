@@ -23,9 +23,15 @@ public class Driver {
 //		List<Reimbursement> reimbs = rr.findByStatus(1);
 //		for (Reimbursement r : reimbs) {
 //			System.out.println(r.toString());
-		initialManagerValues();
+//		initialManagerValues();
+//		testInfoUpdate();
 	}
-	
+//	private static void testInfoUpdate() {
+//		String newFirstName = "John";
+//		String newLastName = "Smith";
+//		String newEmail = "jsmith@gmail.com";
+//		new UserRepository().updateInfo(1, newFirstName, newLastName, newEmail);
+//	}
 	
 	private static void initialManagerValues() {
 		RoleRepository rr = new RoleRepository();
