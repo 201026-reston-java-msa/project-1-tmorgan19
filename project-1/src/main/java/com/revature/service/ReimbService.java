@@ -71,5 +71,15 @@ public class ReimbService {
 		rr.update(reimbursement);
 		
 	}
+
+	public static List<Reimbursement> filterAllByUser(String reqAuthor) {
+		List<Reimbursement> reimbs = ReimbService.filterStatusByUser(reqAuthor, 1);
+		List<Reimbursement> reimbsA = ReimbService.filterStatusByUser(reqAuthor, 2);
+		List<Reimbursement> reimbsD = ReimbService.filterStatusByUser(reqAuthor, 3);
+		reimbs.addAll(reimbsA);
+		reimbs.addAll(reimbsD);
+		
+		return reimbs;
+	}
 	
 }

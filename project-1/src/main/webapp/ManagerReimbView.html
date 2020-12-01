@@ -37,22 +37,27 @@
     <button id="btn">View All</button>
     <button id="btn-p">View Pending</button>
     <button id="btn-r">View Resolved</button>
+    <label for="selectedAuthor">Filter by user</label>
+    <select name="selectedAuthor" id="selectedAuthor"></select>
+    <div>
+        <h3>Approve/Deny Requests Here</h3>
+        <form class="form-inline" method="post" action="ChangeStatus">
+            <div class="form-group">
+              <label for="reimbId">Reimbursement ID</label>
+              <input type="number" class="form-control" name="reimbId">
+            </div>
+            <div class="form-group">
+              <label for="newStatus">Action</label>
+              <select class="form-control" name="newStatus">
+                <option>Approve</option>
+                <option>Deny</option>
+              </select>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+ 
 
-    <form class="form-inline" method="post" action="ChangeStatus">
-        <div class="form-group">
-          <label for="reimbId">Reimbursement ID</label>
-          <input type="number" class="form-control" name="reimbId">
-        </div>
-        <div class="form-group">
-          <label for="newStatus">Action</label>
-          <select class="form-control" name="newStatus">
-            <option>Approve</option>
-            <option>Deny</option>
-          </select>
-        </div>
-        
-        <button type="submit" class="btn btn-primary">Submit</button>
-
-    <script src="tableData.js"></script>
+    <script src="ManagerReimbView.js"></script>
 </body>
 </html>

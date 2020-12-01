@@ -43,6 +43,7 @@ public class ReimbViewServlet extends HttpServlet {
 		
 		if (UserService.isManager(username)) {
 			String reqStatus = request.getParameter("status");
+			String reqAuthor = request.getParameter("author");
 			if (reqStatus != null) {
 				if (reqStatus.equals("all")) {
 					reimbs = ReimbService.filterStatusByAll(1);
@@ -65,21 +66,16 @@ public class ReimbViewServlet extends HttpServlet {
 						reimbs.add(r);
 					}
 				}
+			} else if (reqAuthor != null){
+				reimbs = ReimbService.filterAllByUser(reqAuthor);
+				
 			}
 		}
 		else {
 			String reqStatus = request.getParameter("status");
 			if (reqStatus != null) {
 				if (reqStatus.equals("all")) {
-					reimbs = ReimbService.filterStatusByUser(username, 1);
-					reimbsA = ReimbService.filterStatusByUser(username, 2);
-					reimbsD = ReimbService.filterStatusByUser(username, 3);
-					for (Reimbursement r : reimbsA) {
-						reimbs.add(r);
-					}
-					for (Reimbursement r : reimbsD) {
-						reimbs.add(r);
-					}
+					reimbs = ReimbService.filterAllByUser(username);
 				} 
 				else if (reqStatus.equals("pending")) {
 					reimbs = ReimbService.filterStatusByUser(username, 1);
