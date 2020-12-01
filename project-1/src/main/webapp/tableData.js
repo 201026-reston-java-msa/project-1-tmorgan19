@@ -1,8 +1,35 @@
 var tableContainer = document.getElementById("reimbTable");
 var btn = document.getElementById("btn");
+var btnPend = document.getElementById("btn-p");
+var btnRes = document.getElementById("btn-r");
+var baseUri = 'http://localhost:8080/project-1/ReimbursementView';
 btn.addEventListener("click", function() {
+    chooseStatus('all');
+});
+btnPend.addEventListener("click", function() {
+    chooseStatus('pending');
+});
+btnRes.addEventListener("click", function() {
+    chooseStatus('resolved');
+});
+
+
+
+//     var ourRequest = new XMLHttpRequest();
+//     ourRequest.open('GET', `${baseUri}/?status=${chosenStatus}`);
+
+//     ourRequest.onload = function () {
+//     console.log(ourRequest.responseText);
+//     var ourData = JSON.parse(ourRequest.responseText)
+
+//     renderTableHTML(ourData);
+// };
+// ourRequest.send();
+// });
+
+function chooseStatus(chosenStatus){
     var ourRequest = new XMLHttpRequest();
-    ourRequest.open('GET', 'http://localhost:8080/project-1/ReimbursementView');
+    ourRequest.open('GET', `${baseUri}/?status=${chosenStatus}`);
 
     ourRequest.onload = function () {
     console.log(ourRequest.responseText);
@@ -11,7 +38,7 @@ btn.addEventListener("click", function() {
     renderTableHTML(ourData);
 };
 ourRequest.send();
-});
+}
 
 function renderTableHTML(data){
     var col = [];

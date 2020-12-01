@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
@@ -30,29 +31,72 @@ public class ReimbViewServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		HttpSession session = request.getSession(false);
+		List<Reimbursement> reimbs = null;
+		List<Reimbursement> reimbsA;
+		List<Reimbursement> reimbsD;
 //		
 //		// add logic to change statusId depending on if accessed by pending link or resolved link
 //		
-//		String username = session.getAttribute("username").toString();
-//		List<Reimbursement> reimbursements = ReimbService.filterStatusByUser(username, statusId);
-//		PrintWriter pw = response.getWriter();
-//		for (Reimbursement r : reimbursements) {
-//
-//		}
-		List<Reimbursement> reimbs;
+
+
 		String username = request.getSession(false).getAttribute("username").toString();
-		int statusId = 1;
+//		String username = "manager";
+		
 		if (UserService.isManager(username)) {
-			reimbs = ReimbService.filterStatusByAll(statusId);
+			String reqStatus = request.getParameter("status");
+			if (reqStatus != null) {
+				if (reqStatus.equals("all")) {
+					reimbs = ReimbService.filterStatusByAll(1);
+					reimbsA = ReimbService.filterStatusByAll(2);
+					reimbsD = ReimbService.filterStatusByAll(3);
+					for (Reimbursement r : reimbsA) {
+						reimbs.add(r);
+					}
+					for (Reimbursement r : reimbsD) {
+						reimbs.add(r);
+					}
+				} 
+				else if (reqStatus.equals("pending")) {
+					reimbs = ReimbService.filterStatusByAll(1);
+				}
+				else if (reqStatus.equals("resolved")) {
+					reimbs = ReimbService.filterStatusByAll(2);
+					reimbsD = ReimbService.filterStatusByAll(3);
+					for (Reimbursement r : reimbsD) {
+						reimbs.add(r);
+					}
+				}
+			}
 		}
 		else {
-			reimbs = ReimbService.filterStatusByUser(username, statusId);
+			String reqStatus = request.getParameter("status");
+			if (reqStatus != null) {
+				if (reqStatus.equals("all")) {
+					reimbs = ReimbService.filterStatusByUser(username, 1);
+					reimbsA = ReimbService.filterStatusByUser(username, 2);
+					reimbsD = ReimbService.filterStatusByUser(username, 3);
+					for (Reimbursement r : reimbsA) {
+						reimbs.add(r);
+					}
+					for (Reimbursement r : reimbsD) {
+						reimbs.add(r);
+					}
+				} 
+				else if (reqStatus.equals("pending")) {
+					reimbs = ReimbService.filterStatusByUser(username, 1);
+				}
+				else if (reqStatus.equals("resolved")) {
+					reimbs = ReimbService.filterStatusByUser(username, 2);
+					reimbsD = ReimbService.filterStatusByUser(username, 3);
+					for (Reimbursement r : reimbsD) {
+						reimbs.add(r);
+					}
+				}
+			}
 		}
 		
 		
 		if (reimbs != null) {
-
-
 			Gson gson = new GsonBuilder()
 					.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeSerializer())
 					.serializeNulls()
@@ -72,20 +116,4 @@ public class ReimbViewServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
-	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		request.getParameter("typeOfReimbursements") // either pending or resolved
-//		request.getParameter("employeeScope") // either request specific employee or all
-		
-		//currently set up just to access pending by specific user
-		String username = request.getSession(false).getAttribute("username").toString();
-		int statusId = 1;
-		List<Reimbursement> reimbs = ReimbService.filterStatusByUser(username, statusId);
-		if (reimbs != null) {
-			response.setContentType("application/json");
-			ObjectMapper om = new ObjectMapper();
-			String json = om.writeValueAsString(reimbs);
-			PrintWriter pw = response.getWriter();
-			pw.println(json);
-		}
-	}
 }
