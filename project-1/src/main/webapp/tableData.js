@@ -13,20 +13,6 @@ btnRes.addEventListener("click", function() {
     chooseStatus('resolved');
 });
 
-
-
-//     var ourRequest = new XMLHttpRequest();
-//     ourRequest.open('GET', `${baseUri}/?status=${chosenStatus}`);
-
-//     ourRequest.onload = function () {
-//     console.log(ourRequest.responseText);
-//     var ourData = JSON.parse(ourRequest.responseText)
-
-//     renderTableHTML(ourData);
-// };
-// ourRequest.send();
-// });
-
 function chooseStatus(chosenStatus){
     var ourRequest = new XMLHttpRequest();
     ourRequest.open('GET', `${baseUri}/?status=${chosenStatus}`);

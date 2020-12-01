@@ -59,4 +59,14 @@
     <servlet-name>ChangeStatusServlet</servlet-name>
     <url-pattern>/ChangeStatus</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EmployeeViewServlet</display-name>
+    <servlet-name>EmployeeViewServlet</servlet-name>
+    <servlet-class>com.revature.servlet.EmployeeViewServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmployeeViewServlet</servlet-name>
+    <url-pattern>/EmployeeView</url-pattern>
+  </servlet-mapping>
 </web-app>
