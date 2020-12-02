@@ -19,10 +19,6 @@ public class Driver {
 	public static void main(String[] args) {
 
 //		initialValues();
-//		ReimbRepository rr = new ReimbRepository();
-//		List<Reimbursement> reimbs = rr.findByStatus(1);
-//		for (Reimbursement r : reimbs) {
-//			System.out.println(r.toString());
 //		initialManagerValues();
 //		testInfoUpdate();
 	}
