@@ -24,24 +24,12 @@ public class Status {
 	@Column(name="status_name")
 	private String statusName;
 	
-//	@OneToMany(mappedBy="status", fetch=FetchType.LAZY)
-//	private List<Reimbursement> reimbursements = new ArrayList<Reimbursement>();
-	
 	public Status(int statusId, String statusName) {
 		super();
 		this.statusId = statusId;
 		this.statusName = statusName;
 	}
 	
-
-//	public Status(int statusId, String statusName, List<Reimbursement> reimbursements) {
-//		super();
-//		this.statusId = statusId;
-//		this.statusName = statusName;
-//		this.reimbursements = reimbursements;
-//	}
-
-
 	public int getStatusId() {
 		return statusId;
 	}
@@ -58,7 +46,6 @@ public class Status {
 		this.statusName = statusName;
 	}
 
-
 	public Status() {
 		super();
 	}
@@ -68,8 +55,4 @@ public class Status {
 		return "Status [statusId=" + statusId + ", statusName=" + statusName + "]";
 	}
 
-
-	
-	
-	
 }

@@ -43,12 +43,6 @@ public class User {
 	@JoinColumn(name="role_id")
 	private Role role;
 	
-//	@OneToMany(mappedBy="author", fetch=FetchType.LAZY)
-//	private List<User> authors = new ArrayList<User>();
-//	
-//	@OneToMany(mappedBy="resolver", fetch=FetchType.LAZY)
-//	private List<User> resolvers = new ArrayList<User>();
-	
 	public User() {
 		super();
 	}
@@ -136,6 +130,5 @@ public class User {
 	public void setRole(Role role) {
 		this.role = role;
 	}
-	
 	
 }

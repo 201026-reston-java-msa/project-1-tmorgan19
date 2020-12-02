@@ -23,7 +23,6 @@ public class EmployeeViewServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getSession(false).getAttribute("username").toString();
-//		String username = "example";
 		String reqScope = request.getParameter("scope");
 		if (reqScope != null) {
 			if (reqScope.equals("all")) {
@@ -59,7 +58,6 @@ public class EmployeeViewServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

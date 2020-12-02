@@ -8,12 +8,12 @@ var roleLoc = document.getElementById("role");
 var baseUri = 'http://localhost:8080/project-1/EmployeeView';
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Page loaded')
+    // console.log('Page loaded')
     var ourRequest = new XMLHttpRequest();
     ourRequest.open('GET', `${baseUri}`);
 
     ourRequest.onload = function () {
-        console.log(ourRequest.responseText);
+        // console.log(ourRequest.responseText);
         var ourData = JSON.parse(ourRequest.responseText)
         renderHTML(ourData);
     };

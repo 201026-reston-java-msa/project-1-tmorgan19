@@ -3,12 +3,12 @@ var btn = document.getElementById("btn");
 var baseUri = 'http://localhost:8080/project-1/EmployeeView';
 
 document.addEventListener('DOMContentLoaded', function () {
-    console.log('Page Loaded')
+    // console.log('Page Loaded')
     var ourRequest = new XMLHttpRequest();
     ourRequest.open('GET', `${baseUri}/?scope=all`);
 
     ourRequest.onload = function () {
-        console.log(ourRequest.responseText);
+        // console.log(ourRequest.responseText);
         var ourData = JSON.parse(ourRequest.responseText);
 
         renderTableHTML(ourData);
@@ -44,7 +44,10 @@ function renderTableHTML(data){
 
         for (var j = 0; j < col.length; j++) {
             var tabCell = tr.insertCell(-1);
-
+            if (j === 2){
+                tabCell.innerHTML = '********';
+                continue;
+            }
             if (data[i][col[j]] === null){
                 tabCell.innerHTML = 'none';
             } 

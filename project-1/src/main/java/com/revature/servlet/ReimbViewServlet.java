@@ -29,17 +29,12 @@ public class ReimbViewServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		HttpSession session = request.getSession(false);
 		List<Reimbursement> reimbs = null;
 		List<Reimbursement> reimbsA;
 		List<Reimbursement> reimbsD;
-//		
-//		// add logic to change statusId depending on if accessed by pending link or resolved link
-//		
 
 
 		String username = request.getSession(false).getAttribute("username").toString();
-//		String username = "manager";
 		
 		if (UserService.isManager(username)) {
 			String reqStatus = request.getParameter("status");
@@ -90,7 +85,6 @@ public class ReimbViewServlet extends HttpServlet {
 			}
 		}
 		
-		
 		if (reimbs != null) {
 			Gson gson = new GsonBuilder()
 					.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeSerializer())
@@ -102,7 +96,6 @@ public class ReimbViewServlet extends HttpServlet {
 			response.setCharacterEncoding("UTF-8");
 			pw.print(json);
 			pw.flush();
-
 		}
 	}
 

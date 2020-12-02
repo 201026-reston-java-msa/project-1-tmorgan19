@@ -1,15 +1,12 @@
 package com.revature.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,9 +21,6 @@ public class Type {
 	@Column(name="type_name")
 	private String typeName;
 	
-//	@OneToMany(mappedBy="type", fetch=FetchType.LAZY)
-//	private List<Reimbursement> reimbursements = new ArrayList<Reimbursement>();
-	
 	public Type() {
 		super();
 	}
@@ -35,13 +29,6 @@ public class Type {
 		super();
 		this.typeId = typeId;
 		this.typeName = typeName;
-	}
-
-	public Type(int typeId, String typeName, List<Reimbursement> reimbursements) {
-		super();
-		this.typeId = typeId;
-		this.typeName = typeName;
-//		this.reimbursements = reimbursements;
 	}
 
 	public int getTypeId() {

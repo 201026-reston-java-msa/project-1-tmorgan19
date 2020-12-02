@@ -7,12 +7,12 @@ var baseUri = 'http://localhost:8080/project-1/ReimbursementView';
 var empUri = 'http://localhost:8080/project-1/EmployeeView';
 
 document.addEventListener('DOMContentLoaded', function (){
-    console.log('Page loaded')
+    // console.log('Page loaded')
     var ourRequest = new XMLHttpRequest();
     ourRequest.open('GET', `${empUri}/?scope=all`)
 
     ourRequest.onload = function () {
-        console.log(ourRequest.responseText);
+        // console.log(ourRequest.responseText);
         var ourData = JSON.parse(ourRequest.responseText);
 
         populateDropdown(ourData);
@@ -31,12 +31,12 @@ btnRes.addEventListener("click", function() {
 });
 
 dropdown.addEventListener("change", function () {
-    console.log(dropdown.value + 'selected in dropdown')
+    // console.log(dropdown.value + 'selected in dropdown')
     var ourRequest = new XMLHttpRequest();
     ourRequest.open('GET', `${baseUri}/?author=${dropdown.value}`);
 
     ourRequest.onload = function () {
-    console.log(ourRequest.responseText);
+    // console.log(ourRequest.responseText);
     var ourData = JSON.parse(ourRequest.responseText)
 
     renderTableHTML(ourData);
@@ -49,7 +49,7 @@ function chooseStatus(chosenStatus){
     ourRequest.open('GET', `${baseUri}/?status=${chosenStatus}`);
 
     ourRequest.onload = function () {
-    console.log(ourRequest.responseText);
+    // console.log(ourRequest.responseText);
     var ourData = JSON.parse(ourRequest.responseText)
 
     renderTableHTML(ourData);

@@ -12,7 +12,6 @@ import com.revature.util.HibernateUtil;
 public class UserRepository extends CrudRepository<User> {
 
 	public User findByUsername(String username) {
-		// throws IndexOutOfBoundsException if no results from query
 		Session ses = HibernateUtil.getSession();
 		
 		User user = null;

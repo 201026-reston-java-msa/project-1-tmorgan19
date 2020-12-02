@@ -18,7 +18,7 @@ function chooseStatus(chosenStatus){
     ourRequest.open('GET', `${baseUri}/?status=${chosenStatus}`);
 
     ourRequest.onload = function () {
-    console.log(ourRequest.responseText);
+    // console.log(ourRequest.responseText);
     var ourData = JSON.parse(ourRequest.responseText)
 
     renderTableHTML(ourData);
