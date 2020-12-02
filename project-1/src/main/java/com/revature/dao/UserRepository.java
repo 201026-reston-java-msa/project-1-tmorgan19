@@ -31,7 +31,7 @@ public class UserRepository extends CrudRepository<User> {
 	@Override
 	public List<User> findAll() {
 		Session ses = HibernateUtil.getSession();
-		List<User> users = ses.createQuery("from User", User.class).list();
+		List<User> users = ses.createQuery("from User order by user_id", User.class).list();
 		return users;
 	}
 

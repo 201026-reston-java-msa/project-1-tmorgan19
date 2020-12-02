@@ -32,7 +32,7 @@ public class SubmitReimbursementServlet extends HttpServlet {
 		String description = request.getParameter("description");
 		
 		ReimbService.generateReimbursement(username, amount, type, description);
-		response.sendRedirect("EmployeeHome.html");
+		response.sendRedirect("NewReimbursement.html");
 	}
 
 }

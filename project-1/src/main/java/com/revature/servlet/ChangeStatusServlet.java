@@ -34,7 +34,7 @@ public class ChangeStatusServlet extends HttpServlet {
 		String newStatus = request.getParameter("newStatus");
 		
 		ReimbService.updateStatus(username, reimbId, newStatus);
-		response.sendRedirect("ManagerHome.html");
+		response.sendRedirect("ManagerReimbView.html");
 		
 	}
 

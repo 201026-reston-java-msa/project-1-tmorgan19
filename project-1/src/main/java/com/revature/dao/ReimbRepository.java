@@ -13,7 +13,7 @@ public class ReimbRepository extends CrudRepository<Reimbursement>{
 	@Override
 	public List<Reimbursement> findAll() {
 		Session ses = HibernateUtil.getSession();
-		List<Reimbursement> reimbursements = ses.createQuery("from Reimbursement", Reimbursement.class).list();
+		List<Reimbursement> reimbursements = ses.createQuery("from Reimbursement order by reimb_id", Reimbursement.class).list();
 		return reimbursements;
 	}
 
@@ -26,7 +26,7 @@ public class ReimbRepository extends CrudRepository<Reimbursement>{
 
 	public List<Reimbursement> findByStatus(int statusId){
 		Session ses = HibernateUtil.getSession();
-		Query query = ses.createQuery("from Reimbursement where status_id = :id");
+		Query query = ses.createQuery("from Reimbursement where status_id = :id order by reimb_id");
 		query.setParameter("id", statusId);
 		List<Reimbursement> reimbursements = query.list();
 		return reimbursements;
