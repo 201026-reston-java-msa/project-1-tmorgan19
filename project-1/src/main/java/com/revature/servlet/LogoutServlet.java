@@ -26,10 +26,11 @@ public class LogoutServlet extends HttpServlet {
 		if (session != null) {
 			session.invalidate();
 		}
-		pw.println("Log out successful");
-		pw.println("<div>");
-		pw.println("<a href='login'>Back to Login</a>");
-		pw.println("</div>");
+//		pw.println("Log out successful");
+//		pw.println("<div>");
+//		pw.println("<a href='login'>Back to Login</a>");
+//		pw.println("</div>");
+		response.sendRedirect("logout.html");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -77,12 +77,15 @@ function renderTableHTML(data){
         }
     }
     var table = document.createElement("table");
+    table.className = "table table-striped table-bordered table-sm";
 
     var tr = table.insertRow(-1); //inserts at end rows collection
+    table.className = "table table-striped table-bordered table-sm";
 
     // Create Headers of Table
     for (var i = 0; i < col.length; i++){
         var th = document.createElement("th");
+        th.scope="col";
         th.innerHTML = col[i];
         tr.appendChild(th)
     }

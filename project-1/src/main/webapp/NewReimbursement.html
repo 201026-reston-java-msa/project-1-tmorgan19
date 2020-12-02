@@ -5,13 +5,17 @@
 <title>New Reimbursement</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <style type="text/css">
-.dropdown:hover .dropdown-menu {
-display: block;}
+.centered {
+  text-align: center;
+  max-width: 600px;
+  margin: auto;
+  padding: 100px;
+}
 </style>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">ERS - Employee</a>
+    <a class="navbar-brand">ERS - Employee</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -37,27 +41,32 @@ display: block;}
     </div>
   </nav>
 
-
-<form method="post" action="SubmitReimbursement">
-  <div class="form-group">
-    <label for="amount">Reimbursement Amount</label>
-    <input type="number" class="form-control" name="amount" placeholder="amount">
-  </div>
-  <div class="form-group">
-    <label for="typeSelection">Reimbursement Type</label>
-    <select class="form-control" name="type">
-      <option>Lodging</option>
-      <option>Travel</option>
-      <option>Food</option>
-      <option>Other</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="description">Description</label>
-    <textarea class="form-control" name="description" rows="3"></textarea>
-  </div>
+<div class = "centered">
+  <form method="post" action="SubmitReimbursement">
+    <div class="row">
+      <div class="form-group col">
+        <label for="amount">Reimbursement Amount</label>
+        <input type="number" class="form-control" name="amount" placeholder="amount">
+      </div>
+      <div class="form-group col">
+        <label for="typeSelection">Reimbursement Type</label>
+        <select class="form-control" name="type">
+          <option>Lodging</option>
+          <option>Travel</option>
+          <option>Food</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
   
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" name="description" rows="3"></textarea>
+      </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
 </body>
 </html>

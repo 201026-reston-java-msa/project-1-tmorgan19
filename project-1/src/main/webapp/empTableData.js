@@ -26,12 +26,14 @@ function renderTableHTML(data){
         }
     }
     var table = document.createElement("table");
+    table.className = "table table-striped table-bordered table-sm";
 
     var tr = table.insertRow(-1);
 
     // Create Headers of Table
     for (var i = 0; i < col.length; i++){
         var th = document.createElement("th");
+        th.scope="col";
         th.innerHTML = col[i];
         tr.appendChild(th)
     }

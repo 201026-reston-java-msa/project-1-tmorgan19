@@ -5,10 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manager Home</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style type="text/css">
+        .messages {
+            margin: 0;
+            padding: 0;
+            padding-top: 10px;
+            text-align: center;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+</style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">ERS - Manager</a>
+        <a class="navbar-brand">ERS - Manager</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -16,7 +28,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="ManagerHome.html">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="ManagerReimbView.html">View Reimbursements</a>
@@ -24,14 +36,16 @@
             <li class="nav-item">
               <a class="nav-link" href="ManagerEmpView.html">View Employees</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">My Info</a>
-            </li>
           </ul>
           <div class="form-inline my-2 my-lg-0">
               <a class="btn btn-outline-success my-2 my-sm-0" href="logout">Logout</a>
           </div>
         </div>
       </nav>
+      <div class="messages">
+        <h1>Welcome to your homepage</h1>
+        <h4>Please refer to navigation bar for available services</h4>
+      
+      </div>
 </body>
 </html>
